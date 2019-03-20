@@ -12,25 +12,32 @@ var app = {
 app.init();
 
 var paragraphe = document.getElementById('id');
+var laFonction = function (e) {
+    if (e.x < window.innerWidth / 2) {
+        e.target.classList.remove("text-red");
+    } else {
+        e.target.classList.add("text-red");
+    }
+}
+paragraphe.addEventListener('mouseover', laFonction);
+var titre = document.getElementById('title-1');
+titre.addEventListener('click', function (e) {
+    var p = document.createElement("p");
+    p.classList.add("text-red");
+    p.innerHTML = "du texte gghghjkghjghghjghghjghghghklghkhhk";
+    p.addEventListener('mouseover', laFonction);
+    document.body.appendChild(p);
+});
 
-    paragraphe.addEventListener('mouseover', function (e) {
-        if(e.x<window.innerWidth/2){
-            paragraphe.classList.remove("text-red");
-        }else{
-            paragraphe.classList.add("text-red");
-        }
-    });
-    var titre = document.getElementById('title-1');
-    titre.addEventListener('click', function (e) {
-        var p = document.createElement("p");
-        p.classList.add("text-red");
-        p.innerHTML="du texte";
-        document.body.appendChild(p);
-    });
-    var titre2 = document.getElementById('title-2');
-    titre2.addEventListener('click', function (e) {
-        var suppr = document.getElementsByTagName('p')[1];
-        suppr.parentNode.removeChild(suppr);
-    });
 
-    
+var titre2 = document.getElementById('title-2');
+titre2.addEventListener('click', function (e) {
+    var suppr = document.getElementsByTagName('p');
+
+    for (let i = suppr.length-1; i > 0; i--) {
+        suppr[i].parentNode.removeChild(suppr[i]);
+    }
+
+
+});
+
